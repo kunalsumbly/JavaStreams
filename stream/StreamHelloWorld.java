@@ -6,6 +6,7 @@ import java.util.stream.*;
 
 public class StreamHelloWorld {
 	public static void main(String[] args) {
+		
 		List<Account> myList = new ArrayList<Account>();
 		Account account1 = new Account("1", "KUSU001", AccountType.SAVING.name(), "1000");
 		Account account2 = new Account("2", "KUSU002", AccountType.TRADING.name(), "100");
@@ -26,6 +27,8 @@ public class StreamHelloWorld {
 		Account account17 = new Account("17", "KUSU0017", AccountType.TRADING.name(), "1000");
 		Account account18 = new Account("18", "KUSU0018", AccountType.RECURRING.name(), "1000");
 		Account account19 = new Account("19", "KUSU0019", AccountType.SAVING.name(), "1000");
+		
+		
 		myList.add(account1);
 		myList.add(account10);
 		myList.add(account11);
