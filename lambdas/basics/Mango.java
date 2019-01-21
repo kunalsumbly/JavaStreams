@@ -10,6 +10,7 @@ public class Mango extends Fruit {
 		super.setWeight(pWeight);
 	}
 	
+	
 	public static void main(String[] args) {
 		List<Mango> populateMangoList = lambdas.basics.util.LambdaHelper.populateMangoList();
 		// Different method for different conditions is wasteful coding and very verbose
@@ -20,11 +21,10 @@ public class Mango extends Fruit {
 		// All the client has to do is to create an method whose 
 		//signature matches with functional interface Predicate test()
 		// boolean test(T t);
-		List<Mango> filterGreenMangoes = filterMangoes(populateMangoList,Mango::isGreen);  // client calls the already added method
-		assert filterGreenMangoes.size() == 3; // enable assertion using -enableassertion in VM args
-		
-		
-		
+		List<Mango> filterGreenMangoes = filterMangoes(populateMangoList,Mango::isGreen);  // pass function as argument to another function (method reference) 
+		assert filterGreenMangoes.size() == 2; // enable assertion using -enableassertion in VM args
+		filterGreenMangoes = filterMangoes(filterGreenMangoes,Mango::isHeavyMango); // green apple which is heavier than 100 , there is only 1
+		assert filterGreenMangoes.size() == 1; // enable assertion using -enableassertion in VM args
 	}
 	
 	
