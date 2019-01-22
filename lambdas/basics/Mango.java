@@ -25,6 +25,21 @@ public class Mango extends Fruit {
 		assert filterGreenMangoes.size() == 2; // enable assertion using -enableassertion in VM args
 		filterGreenMangoes = filterMangoes(filterGreenMangoes,Mango::isHeavyMango); // green apple which is heavier than 100 , there is only 1
 		assert filterGreenMangoes.size() == 1; // enable assertion using -enableassertion in VM args
+		
+		// another way , pass the lambda expression itself instead of creating a new method
+		List<Mango> filterRedMangoes = filterMangoes(populateMangoList, (Mango m) -> "RED".equals(m.getColor()));
+		assert filterRedMangoes.size() == 2;
+		
+		
+		// another  way of creating lambdas
+		List<Mango> filterYellowHeavyMangoes = filterMangoes(populateMangoList,
+				(Mango m) -> "YELLOW".equals(m.getColor()) && m.getWeight() > 105);
+		assert filterYellowHeavyMangoes.size() == 1;
+		
+		// another  way of creating lambdas
+		filterYellowHeavyMangoes = filterMangoes(populateMangoList,
+						(Mango m) -> "YELLOW".equals(m.getColor()) && m.getWeight() > 100);
+		assert filterYellowHeavyMangoes.size() == 2;
 	}
 	
 	

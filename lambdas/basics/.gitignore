@@ -8,3 +8,5 @@
 /SortLambda.class
 /Mango.class
 /Mango$Predicate.class
+/CustomFunctionalInterface.class
+/CustomFunctionalInterface$BufferedReaderProcessor.class

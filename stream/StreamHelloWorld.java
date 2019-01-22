@@ -51,9 +51,28 @@ public class StreamHelloWorld {
 		
 		
 		// Filter only Savings Account Types
+		// In this case filter() accepts the parameter which take input d and return boolean , which is of type Predicate<T> T -> boolean
+		// forEach() accepts a parameter and does not return anything and simply prints out , hence is of type Consumer<T> T-> void
 		myList.stream().filter(d -> d.accountType.equals(AccountType.SAVING.name())).collect(Collectors.toList())
 				.forEach(s -> System.out
 						.println(s.accountId + ":" + s.accountName + ":" + s.accountType + ":" + s.accountBalance));
+		//filter RECURRING Saving Account Type List
+		List<Account> recurringList = myList.stream().filter(d-> d.accountType.equals(AccountType.RECURRING.name())).collect(Collectors.toList());
+		assert recurringList.size() == 7; 
+	
+
+		// SUM OF ALL THE RECURRING ACCOUNTS
+		/*myList.stream().filter(d -> d.accountType.equals(AccountType.RECURRING.name())).collect(Collectors.toList())
+				.forEach(a -> {
+					int sumRecurringAccounts = 0;
+					sumRecurringAccounts = Integer.valueOf(a.accountBalance) + sumRecurringAccounts;
+				});*/
+		
+		myList.stream().filter(d -> d.accountType.equals(AccountType.RECURRING.name())).collect(Collectors.toList())
+		.forEach(a -> {
+			Integer.sum(a, b);
+		});
+		
 	}
 	
 }
