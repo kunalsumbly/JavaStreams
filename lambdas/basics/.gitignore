@@ -10,3 +10,7 @@
 /Mango$Predicate.class
 /CustomFunctionalInterface.class
 /CustomFunctionalInterface$BufferedReaderProcessor.class
+/PrettyPrintApples.class
+/PrettyPrintApples$ApplePrinter.class
+/GenericListPredicate.class
+/GenericListPredicate$Predicate.class
