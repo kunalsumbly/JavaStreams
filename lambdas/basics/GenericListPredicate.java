@@ -17,7 +17,10 @@ public class GenericListPredicate {
 		List<Apple> appleList = filterList(LambdaHelper.populateAppleList(), (Apple a)-> a.getWeight() >100 );
 		assert appleList.size() == 4;
 		List<Integer> numbers =  new ArrayList(Arrays.asList(new Integer []{1,2,3,4,5,6,77,88,99,43,56,67}));
-		List<Integer> numberList = filterList(numbers , (Integer i) -> i % 2==0 );
+		
+		Predicate<Integer> listPredicate = (Integer i) -> i % 2==0;
+		List<Integer> numberList = filterList(numbers , listPredicate);
+		
 		assert numberList.size() == 5;
 		List<String> strings = new ArrayList<>(Arrays.asList(new String []{"god","devil"}));
 		List<String> stringList = filterList(strings , (String i) -> i.equals("god"));
@@ -36,6 +39,7 @@ public class GenericListPredicate {
 	}
 	
 	
+	// Predicate accepts an Object T and returns boolean
 	@FunctionalInterface
 	public interface Predicate<T>{
 		boolean test(T t);

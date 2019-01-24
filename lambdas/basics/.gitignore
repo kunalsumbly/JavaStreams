@@ -14,3 +14,7 @@
 /PrettyPrintApples$ApplePrinter.class
 /GenericListPredicate.class
 /GenericListPredicate$Predicate.class
+/ConsumerInterfaceLambda.class
+/ConsumerInterfaceLambda$Consumer.class
+/FunctionInterfaceLambda.class
+/FunctionInterfaceLambda$Function.class
