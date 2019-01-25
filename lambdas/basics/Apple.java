@@ -1,6 +1,11 @@
 package lambdas.basics;
 
 public class Apple extends Fruit implements Comparable  {
+	
+	public Apple(Integer i){
+		super.setWeight(i);
+		super.setColor("Default");
+	}
 
 	public Apple(int p_weight, String p_color) {
 		super.setWeight(p_weight);
