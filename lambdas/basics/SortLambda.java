@@ -27,6 +27,7 @@ public class SortLambda {
 		bananaList.sort(Comparator.comparing(Fruit::getWeight).reversed()); // using method reference
 		System.out.println(":::::::::::::::AFTER SORTING by weight reverse banana list:::::::::::::::::");
 		LambdaHelper.iterateAndPrintList(bananaList);
+		
 
 	}
 }
