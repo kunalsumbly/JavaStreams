@@ -1,6 +1,7 @@
 package lambdas.basics.util;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -9,6 +10,7 @@ import lambdas.basics.Apple;
 import lambdas.basics.Banana;
 import lambdas.basics.Fruit;
 import lambdas.basics.Mango;
+import stream.Dish;
 
 public class LambdaHelper {
 	public static void oldJavaSortByColor(List<? extends Fruit> appleList) {
@@ -43,7 +45,7 @@ public class LambdaHelper {
 		appleList.add(apple9);
 		return appleList;
 	}
-	
+
 	public static void iterateAndPrintList(List<? extends Fruit> appleList) {
 		// After sort
 		for (Object apple : appleList) {
@@ -74,8 +76,7 @@ public class LambdaHelper {
 		BananaList.add(Banana9);
 		return BananaList;
 	}
-	
-	
+
 	public static List<Mango> populateMangoList() {
 		List<Mango> MangoList = new ArrayList<>();
 		Mango Mango1 = new Mango(100, "RED");
@@ -98,5 +99,15 @@ public class LambdaHelper {
 		MangoList.add(Mango8);
 		MangoList.add(Mango9);
 		return MangoList;
+	}
+
+	public static List<Dish> populateDishList() {
+		List<Dish> menu = Arrays.asList(new Dish("pork", false, 800, Dish.Type.MEAT),
+				new Dish("beef", false, 700, Dish.Type.MEAT), new Dish("chicken", false, 400, Dish.Type.MEAT),
+				new Dish("french fries", true, 530, Dish.Type.OTHER), new Dish("rice", true, 350, Dish.Type.OTHER),
+				new Dish("season fruit", true, 120, Dish.Type.OTHER), new Dish("pizza", true, 550, Dish.Type.OTHER),
+				new Dish("prawns", false, 300, Dish.Type.FISH), new Dish("salmon", false, 450, Dish.Type.FISH));
+
+		return menu;
 	}
 }

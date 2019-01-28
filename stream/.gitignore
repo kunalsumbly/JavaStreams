@@ -3,3 +3,8 @@
 /StreamHelloWorld$AccountType.class
 /Account.class
 /AccountType.class
+/Dish.class
+/Dish$Type.class
+/LambdaDishFilter.class
+/LambdaWordFilter.class
+/LambdaStringLengthFilter.class

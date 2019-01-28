@@ -2,6 +2,7 @@ package stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lambdas.basics.Account;
@@ -71,10 +72,14 @@ public class StreamHelloWorld {
 					sumRecurringAccounts = Integer.valueOf(a.accountBalance) + sumRecurringAccounts;
 				});*/
 		
-		myList.stream().filter(d -> d.accountType.equals(AccountType.RECURRING.name())).collect(Collectors.toList())
-		.forEach(a -> {
-			Integer.sum(a, b);
-		});
+		Integer finalSumOfRecurringAccounts = myList.stream()
+				.filter(d -> d.accountType.equals(AccountType.RECURRING.name()))
+				.map(a -> Integer.valueOf(a.accountBalance)).reduce(0, (a, b) -> a + b);
+		System.out.println("Sum::"+finalSumOfRecurringAccounts);
+		Optional<Integer> finalSumOfRecurringAccountsOptional = myList.stream()
+				.filter(d -> d.accountType.equals(AccountType.RECURRING.name()))
+				.map(a -> Integer.valueOf(a.accountBalance)).reduce((a, b) -> a + b);
+		finalSumOfRecurringAccountsOptional.ifPresent(a-> System.out.println(a));
 		
 	}
 	
