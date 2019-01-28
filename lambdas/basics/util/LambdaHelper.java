@@ -11,6 +11,8 @@ import lambdas.basics.Banana;
 import lambdas.basics.Fruit;
 import lambdas.basics.Mango;
 import stream.Dish;
+import stream.Trader;
+import stream.Transaction;
 
 public class LambdaHelper {
 	public static void oldJavaSortByColor(List<? extends Fruit> appleList) {
@@ -110,4 +112,23 @@ public class LambdaHelper {
 
 		return menu;
 	}
+	
+	public static List<Transaction> populateTransactionList(){
+		Trader raoul = new Trader("Raoul", "Cambridge");
+		Trader mario = new Trader("Mario","Milan");
+		Trader alan = new Trader("Alan","Cambridge");
+		Trader brian = new Trader("Brian","Cambridge");
+
+		List<Transaction> transactions = Arrays.asList(
+		    new Transaction(brian, 2011, 300),
+		    new Transaction(raoul, 2012, 1000),
+		    new Transaction(raoul, 2011, 400),
+		    new Transaction(mario, 2012, 710),
+		    new Transaction(mario, 2012, 700),
+		    new Transaction(alan, 2012, 950)
+		);
+		return transactions;
+	}
+	
+	
 }
