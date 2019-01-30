@@ -21,7 +21,11 @@ public class LambdaTraderTest {
 	private static void sumOfAllTransactionValues() {
 		Integer reduce = LambdaHelper.populateTransactionList().stream().map(d -> d.getValue()).reduce(0,
 				(a, b) -> (a + b));
-		System.out.println("Sum of all transactions" + reduce);
+		System.out.println("Sum of all transactions=" + reduce);
+		
+		// another way using Primitive Streams
+		int sum = LambdaHelper.populateTransactionList().stream().mapToInt(d-> d.getValue()).sum();
+		System.out.println("Primitive Int Stream transactions=" + sum);
 	}
 
 	private static void smallestValueOfAllTransactions() {
