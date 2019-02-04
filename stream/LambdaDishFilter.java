@@ -2,6 +2,7 @@ package stream;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,38 @@ public class LambdaDishFilter {
 		findMaximumCalorieDishByReduce(); 
 		findMinimumCalorieDishByReduce();
 		countNumberOfDishes();
+		findMaximumCalorieDishByCollect();
+		findMinumumCalorieDishByCollect();
+		findAverageCaloriesOfAllDishesUsingCollect();
+		IntSummaryCaloriesUsingCollect();
+	}
+
+	private static void IntSummaryCaloriesUsingCollect() {
+		IntSummaryStatistics collect = LambdaHelper.populateDishList().stream().collect(Collectors.summarizingInt(Dish::getCalories));
+		System.out.println("sum of all the calories:::"+collect.getSum());
+		System.out.println("avg of all the calories:::"+collect.getAverage());
+		System.out.println("max calorie dish:::"+collect.getMax());
+		System.out.println("min calorie dish:::"+collect.getMin());
+		System.out.println("count dishes:::"+collect.getCount());
+	}
+
+	private static void findMinumumCalorieDishByCollect() {
+		Comparator<Dish> dishComparator = Comparator.comparing(Dish::getCalories);
+		Optional<Dish> collect = LambdaHelper.populateDishList().stream().collect(Collectors.minBy(dishComparator));
+		collect.ifPresent(s-> System.out.println("Minimum calorie dish::"+s.getName()+"--"+s.getCalories()));
+		
+	}
+
+	private static void findAverageCaloriesOfAllDishesUsingCollect() {
+		Double collect2 = LambdaHelper.populateDishList().stream().collect(Collectors.averagingInt(Dish::getCalories));
+		System.out.println("average calories::"+collect2);
+	}
+
+	private static void findMaximumCalorieDishByCollect() {
+		Comparator<Dish> dishComparator = Comparator.comparing(Dish::getCalories);
+		Optional<Dish> collect = LambdaHelper.populateDishList().stream().collect(Collectors.maxBy(dishComparator));
+		collect.ifPresent(s-> System.out.println(s.getName()+"--"+s.getCalories()));
+		
 	}
 
 	private static void countNumberOfDishes() {
@@ -39,12 +72,12 @@ public class LambdaDishFilter {
 	}
 
 	private static void findMaximumCalorieDishByReduce() {
-		LambdaHelper.populateDishList().stream().map(d-> d.getCalories()).reduce((a,b) -> a>b?a:b).ifPresent(s-> System.out.println(s.intValue()));
+		LambdaHelper.populateDishList().stream().map(d-> d.getCalories()).reduce((a,b) -> a>b?a:b).ifPresent(s-> System.out.println("maximum:::"+s.intValue()));
 		
 	}
 	
 	private static void findMinimumCalorieDishByReduce() {
-		LambdaHelper.populateDishList().stream().map(d-> d.getCalories()).reduce((a,b) -> a<b?a:b).ifPresent(s-> System.out.println(s.intValue()));
+		LambdaHelper.populateDishList().stream().map(d-> d.getCalories()).reduce((a,b) -> a<b?a:b).ifPresent(s-> System.out.println("minimum::::"+s.intValue()));
 		
 	}
 
@@ -83,6 +116,7 @@ public class LambdaDishFilter {
 		System.out.println(collect);
 	}
 
+	// using Collectors.groupingBy()
 	private static void groupDishByType() {
 		Map<Type, List<Dish>> collect = LambdaHelper.populateDishList().stream()
 				.collect(Collectors.groupingBy(Dish::getType));
